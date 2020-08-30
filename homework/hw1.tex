@@ -1,0 +1,363 @@
+\documentclass[11pt]{article}
+\usepackage{eecs16a}
+
+%%%%%%%%%%%%%%%%%%%% name/id
+\rfoot{\small Brian Park | 3033045069}
+
+
+%%%%%%%%%%%%%%%%%%%% Course/HW info
+\newcommand*{\instr}{Gireeja Ranade}
+\newcommand*{\term}{Fall 2020}
+\newcommand*{\coursenum}{EECS 16A}
+\newcommand*{\coursename}{Designing Information Devices and Systems I}
+\newcommand*{\hwnum}{1}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document Start %%%%%%%%%%%%%%%%%
+\begin{document}
+
+\question{Reading Assignment}
+For this homework, please read Note 0 and Note 1 until Section 1.6. This will provide an overview of linear equations and augmented matrices. You are always welcome and encouraged to read ahead beyond this as well. Write a paragraph about how this relates to what you have learned before and what is new.
+\begin{Answer}
+	%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+	Although I have taken linear algebra here before, I am excited to learn the applications of linear algebra as a tool in electrical engineering and computer science. I have already gotten a taste of them in my CS classes, such as neural networks and Markov chains. But even though I only need the credit for EECS 16B, I decided to take this course to rethink linear algebra as an engineer, and help me better prepare for CS upper divisions.
+\end{Answer}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Question 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\Question{Survey}
+To complete this part of the HW, you only have to fill out the two surveys and indicate in your
+submitted answer that you filled them both out. Nothing else is required.
+
+\begin{Parts}
+	\Part We would like to get to know you all a bit better, please do tell us about yourself!
+	
+	\Part Since students won’t have the chance to get to know each other in the usual way this semester, we are trying a new pilot plan to organize study groups for you all. Please give us some information that will help us create study groups for all of you.
+	
+\end{Parts}
+
+
+\Question{Syllabus}
+Read the course syllabus and answer the following questions. The syllabus can be found here: https: //eecs16a.org/policies.html.
+
+\begin{Parts}
+	\Part What are the dates and times for both midterms and the final exam? If you live in a timezone other than the Pacific Time zone (for Berkeley) compute what times these correspond to for you.
+	\begin{Answer}
+		%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+		Midterms will be on Monday, Oct 5, 2020 from 7:00pm to 9:00pm PT and Monday, Nov 2nd, 2020 from 7:00pm to 9:00pm PT. The final will be held on Friday, Dec 18, from 8:00am to 11:00am PT. There will be no alternate exams. 
+		\newline I live on EST, so the times for the exams would then be Monday, Oct 5, 2020 from 10:00pm to 12:00am and Monday, Nov 2nd, 2020 from 10:00pm to 12:00am. The final will be held on Friday, Dec 18, from 11:00am to 2:00pm.
+	\end{Answer}
+	
+	\Part If you need exam accommodation whom do you contact and how?
+	\begin{Answer}
+		%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+		Exam accommodations should be sent and notified to course staff as soon as you can, mainly by emailing  eecs16a@berkeley.edu.
+	\end{Answer}
+	
+	\Part When is homework 1 due? When is homework 1’s self-grade due? In general, what day of the week is the homework due and at what time? In general, what day of the week are the self-grades due and at what time? If you live in a timezone other than the Pacific Time zone (for Berkeley) compute what times these correspond to for you.
+	\begin{Answer}
+		%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+		Homework 1 is due September 4, 2020 at 23:59 PT or September 5, 2020 at 2:59 EST. And the self grade is due September 7, 2020 at 23:59 PT or September 8, 2020 at 2:59 EST. 
+		\newline In general, homeworks are usually due on the Friday of each week 23:59 PT, or Saturday 3:00am EST. The self-grades are usually due the following Monday 23:59 PT sharp, or following Monday 2:59am EST sharp.
+	\end{Answer}
+	
+	\Part When are homework parties? Homework parties are where groups of students can get together to work on the homework together.
+	\begin{Answer}
+		%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+		Thursdays 9-11AM and 2-4PM PT
+	\end{Answer}
+	
+	\Part How many homework drops do you get? Reminder, the homework drop is for extenuating circum- stance such as getting sick, family emergencies etc. You should plan on completing and submitting all homeworks and self-grades.
+	\begin{Answer}
+		%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+		Only one. The lowest homework grade will be dropped.
+	\end{Answer}
+	
+	\Part If you miss a homework, can you resubmit it for partial credit after the solutions are released? When do you have to submit it by?
+	\begin{Answer}
+		%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+		You can resubmit your homework and they are due on the Monday 23:59 PT, when the self-grades are also due. You can resubmit to gain 70\% of the missing points. You must also submit another set of self grades for the resubmission though.
+	\end{Answer}
+	
+	\Part What is the penalty if you turn in your self-grades up to one week late?
+	\begin{Answer}
+		%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+		The penalty will be 75\% credit if you turn it in a week, but a 0 if you turn it in over a week.
+	\end{Answer}
+	
+	\Part What score will you get on a homework if you do not submit your self-grades?
+	\begin{Answer}
+		%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+		You will get a 0 if you fail to turn in your self-grades
+	\end{Answer}
+	
+	\Part There are two ways to get participation credit in the course — by either attending discussions live, or by watching a recorded discussion. Describe the procedures to get discussion credit for both types of participation. How many discussions do you need to attend to get full participation credit?
+	\begin{Answer}
+		%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+		You need to participate or watch 16 discussions in order to get 10 points. For a live discussion, your participation will automatically be recorded. If you are watching, you have to fill out a Google form describing what you learned in discussion.
+	\end{Answer}
+	
+	\Part Fill in the blank: You should attend one discussion section on \_\_\_\_\_\_\_ and one discussion section on \_\_\_\_\_\_\_ each week.
+	\begin{Answer}
+		%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+		Monday; Wednesday.
+	\end{Answer}
+	
+	\Part Provide a complete list of everything you must do in order to receive credit for your homework assignments.
+	\begin{Answer}
+		%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+		\begin{enumerate}[1]
+			\item Do the homework, and submit it along with any iPython code.
+			\item Once homework solutions are out, do the self-grading and fill out the form and submit your token.
+		\end{enumerate}
+	\end{Answer}
+	
+	\Part  Read the following guide: www.tinyurl.com/ee16a-gradescope. What are the five steps in the submission process for a PDF on Gradescope? Please note that if you do not select pages for each question/subquestion we cannot grade your homework and we will be forced to give you a 0.
+	\begin{Answer}
+		%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+		\begin{enumerate}[1]
+			\item Find the appropriate assignment in the Gradescope portal.
+			\item Select 'Submit PDF'
+			\item Upload your single PDF, containing both your (scanned) handwritten answers and a 'printout' of your iPython code (can be concatenated with www.pdfmerge.com).
+			\item Assign questions to pages of your submission. Each page must be assigned a question, and each question must be assigned a page (except optional or practice questions) before you click “Submit”. You must select pages, or you will receive a 0 on the associated homework questions. You may select and reselect pages multiple times after your PDF has been submitted, and Gradescope will not count your submission as late.
+			\item Click "Submit" in the lower right-hand corner. If you have selected pages correctly, you will not have to click through a warning message.
+		\end{enumerate}
+	\end{Answer}
+	
+	\Part If you submit your homework but forget to select pages, can you reselect pages?
+	\begin{Answer}
+		%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+		Yes.
+	\end{Answer}
+
+	\Part What percentage do you need to get on a homework assignment for you to get full credit for the assignment?
+	\begin{Answer}
+		%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+		80\%
+	\end{Answer}
+	
+	\Part Will the exams in this class be proctored via personal zoom recordings?
+	\begin{Answer}
+		%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+		Yes.
+	\end{Answer}
+	
+	\Part Fill in the blank:
+If you miss \_\_\_\_\_\_\_ or more labs you will fail the class.
+	\begin{Answer}
+		%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+		4
+	\end{Answer}
+	
+	\Part Fill in the blank:
+During buffer lab periods, you may get checked off for atmost \_\_\_\_\_\_\_ missed lab that occurred during that lab module by attending your \_\_\_\_\_\_\_ section.
+	\begin{Answer}
+		%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+		1; regular assigned lab section
+	\end{Answer}
+	
+\end{Parts}
+
+\Question{Homework resources}
+If you need help on a homework problem or have a question about the material, what are some of the resources you might be able to use?
+
+\begin{enumerate}[i]
+	\item Homework party 
+	\item TA office hours
+    \item Professor office hours
+	\item Asking a friend taking 16A
+    \item Posting on Piazza 
+    \item Going to discussion
+	\item All of the above
+\end{enumerate}
+
+\begin{Answer}
+	%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+	All of the above.
+\end{Answer}
+
+\Question{Counting Solutions}
+Learning Goal: (This problem is meant to illustrate the different types of systems of equations. Some have a unique solution and others have no solutions or infinitely many solutions. We will learn in this class how to systematically figure out which of the three above cases holds.) \\
+Directions: For each of the following systems of linear equations, determine if there is a unique solution, no solution, or an infinite number of solutions. If there is a unique solution, find it. If there is an infinite number of solutions, describe the set of solutions. If there is no solution, explain why. Show your work. \\
+Example: We first provide an example to show two ways to solve systems of linear equations. At this point, we only expect you to be able to follow the first approach. The second approach, Gaussian elimination, will be covered in class and in Note 1. You may use either approach to solve the following problems. You will receive many more practice problems on Gaussian Elimination later on, do not worry if you do not want to use the Gaussian Elimination approach.
+
+\begin{align*}
+    2x + 3y &= 5 \\
+    x + y &= 2
+\end{align*}
+
+\textbf{\underline{Solution A}}
+\begin{align}
+    2x + 3y &= 5 \\
+    x + y &= 2
+\end{align}
+
+Subtract: $(1)-2*(2)$
+\begin{align}
+    y = 1
+\end{align}
+
+Now we plug in (3) into (2) and solve for $x$
+\begin{align}
+    x + 1 &= 2 \nonumber \\ 
+    \rightarrow x &= 1
+\end{align}
+
+From (3) and (4), we get the unique solution: 
+\begin{align*}
+    x &= 1 \\
+    y &= 1
+\end{align*}\\
+
+\textbf{\underline{Solution B}}
+\\
+
+\begin{align*}
+    \left[ \begin{array}{cc|c} 2 & 3 & 5 \\ 1 & 1 & 2 \end{array} \right] &\rightarrow \left[ \begin{array}{cc|c} 1 & \frac{3}{2} & \frac{5}{2} \\ 1 & 1 & 2 \end{array} \right] \text{ using } R_1 \leftarrow \frac{1}{2}R_1
+    \\
+    &\rightarrow \left[ \begin{array}{cc|c} 1 & \frac{3}{2} & \frac{5}{2} \\ 0 & -\frac{1}{2} & -\frac{1}{2} \end{array} \right] \text{ using } R_2 \leftarrow \frac{1}{2} R_2 - R_1
+    \\
+    &\rightarrow \left[ \begin{array}{cc|c} 1 & \frac{3}{2} & \frac{5}{2} \\ 0 & 1 & 1 \end{array} \right] \text{ using } R_2 \leftarrow -2R_2
+    \\
+    &\rightarrow \left[ \begin{array}{cc|c} 1 & 0 & 1 \\ 0 & 1 & 1 \end{array} \right] \text{ using } R_1 \leftarrow R_1 - \frac{3}{2}R_2
+\end{align*}
+
+Unique solution, $\begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} 1 \\ 1 \end{bmatrix}$ \\
+
+\begin{enumerate}[(a)]
+    \item 
+    \begin{align*}
+        x + y + z &= 3 \\
+        2x + 2y + 2z &= 5
+    \end{align*}
+    
+    \begin{Answer}
+		%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+		$$\begin{amatrix}{3}
+   		1 & 1 & 1 & 3 \\  2 & 2 & 2 & 5
+ 		\end{amatrix}$$
+				
+		$$\begin{amatrix}{3}
+   		1 & 1 & 1 & 3 \\  0 & 0 & 0 & -1
+ 		\end{amatrix} \text{using } R_2 \leftarrow R_2 - 2R_1$$
+		
+		$$\begin{amatrix}{3}
+   		1 & 1 & 1 & 3 \\  0 & 0 & 0 & 1
+ 		\end{amatrix}\text{using }R_2 \leftarrow (-1)R_2$$
+		
+		$$0 \neq 1$$
+		Therefore, no unique solution exists.
+	\end{Answer}
+    
+    \item 
+    \begin{align*}
+        -y + 2z &= 1 \\
+        2x  + z &= 2
+    \end{align*}
+    
+    \begin{Answer}
+		%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+		$$\begin{amatrix}{3}
+   		0 & -1 & 2 & 1 \\  2 & 0 & 1 & 2
+ 		\end{amatrix}$$
+		
+		$$\begin{amatrix}{3}
+   		0 & 1 & -2 & -1 \\  1 & 0 & \frac{1}{2} & 1
+ 		\end{amatrix} \text{using } R_2 \leftarrow (\frac{1}{2})R_2 \text{ and } R_1 \leftarrow (-1)R_1$$
+		
+		$$y - 2z = 1$$
+		$$x + \frac{1}{2}z = 1$$\\
+		$$y = 2z + 1$$
+		$$x = 1 - \frac{1}{2}z$$
+		
+		Therefore, infinitely many solutions dependent on $z$.
+	\end{Answer}
+    
+    \item 
+    \begin{align*}
+        x + 2y &= 3 \\
+        2x - y &= 1 \\
+        3x + y &= 4
+    \end{align*}
+    
+    \begin{Answer}
+		%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+		$$\begin{amatrix}{2}
+   		1 & 2 & 3 \\  
+		2 & -1 & 1\\
+		3 & 1 & 4
+		\end{amatrix}$$
+		
+		$$\begin{amatrix}{2}
+   		1 & 2 & 3 \\  
+		0 & -5 & -5\\
+		0 & -5 & -5
+		\end{amatrix} \text{using } R_2 \leftarrow R_2 - 2R_1 \text{ and }  R_3 \leftarrow R_3 - 3R_1$$
+		
+		$$\begin{amatrix}{2}
+   		1 & 2 & 3 \\  
+		0 & 1 & 1\\
+		0 & 1 & 1
+		\end{amatrix} \text{using } R_2 \leftarrow \frac{R_2}{-5} \text{ and }  R_3 \leftarrow \frac{R_3}{-5}$$
+		
+		$$\begin{amatrix}{2}
+   		1 & 2 & 3 \\  
+		0 & 1 & 1\\
+		0 & 0 & 0
+		\end{amatrix}\text{using } R_3 \leftarrow R_3 - R_2$$
+		
+		$$\begin{amatrix}{2}
+   		1 & 0 & 1 \\  
+		0 & 1 & 1\\
+		0 & 0 & 0
+		\end{amatrix}\text{using } R_1 \leftarrow R_1 - (2)R_2$$
+		
+		$$x = 1$$
+		$$y = 1$$
+		$$z \text{ is free variable}$$
+		
+		Therefore, infinitely many solutions.
+		
+	\end{Answer}
+    
+    \item
+    \begin{align*}
+        x + 2y &= 3 \\
+        2x - y &= 1 \\
+        x - 3y &= -5
+    \end{align*}
+    
+    \begin{Answer}
+		%%%%%%%%%%%Write your answer here%%%%%%%%%%%%%%%
+		$$\begin{amatrix}{2}
+   		1 & 2 & 3 \\  
+		2 & -1 & 1\\
+		1 & -3 & -5
+		\end{amatrix}$$
+		
+		$$\begin{amatrix}{2}
+   		1 & 2 & 3 \\  
+		0 & -5 & -5\\
+		0 & -5 & -8
+		\end{amatrix} \text{using } R_2 \leftarrow R_2 - 2R_1 \text{ and }  R_3 \leftarrow R_3 - R_1$$
+		
+		$$\begin{amatrix}{2}
+   		1 & 2 & 3 \\  
+		0 & -5 & -5\\
+		0 & 0 & -3
+		\end{amatrix} \text{using } R_3 \leftarrow R_3 - R_2 $$
+		
+		$$0 \neq -3$$
+		
+		Therefore, no solution exists.
+	\end{Answer}
+
+\end{enumerate}
+
+
+
+\end{document}
