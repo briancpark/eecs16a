@@ -1,11 +1,13 @@
 import numpy as np
 
+
 def test1b_H(H):
     H_correct = np.eye(25)
     if np.isfinite(H).all() and np.array_equal(H, H_correct):
         print("H mask matrix is correct")
     else:
         print("H mask matrix is incorrect")
+
 
 def test1b_H_alt(H_alt):
     H_correct = np.eye(25)
@@ -14,6 +16,7 @@ def test1b_H_alt(H_alt):
         print("H_alt mask matrix is correct")
     else:
         print("H_alt mask matrix is incorrect")
+
 
 def test2(H, H_alt):
     H_correct = np.eye(1024)
@@ -26,4 +29,3 @@ def test2(H, H_alt):
         print("H_alt mask matrix is correct")
     else:
         print("H_alt mask matrix is incorrect")
-

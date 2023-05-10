@@ -15,43 +15,50 @@ import serial
 
 BAUD_RATE = 115200
 
+
 def serial_ports():
-  """Lists serial ports
+    """Lists serial ports
 
-  Raises:
-  EnvironmentError:
-      On unsupported or unknown platforms
-  Returns:
-      A list of available serial ports
-  """
-  if sys.platform.startswith('win'):
-      ports = ['COM' + str(i + 1) for i in range(256)]
+    Raises:
+    EnvironmentError:
+        On unsupported or unknown platforms
+    Returns:
+        A list of available serial ports
+    """
+    if sys.platform.startswith("win"):
+        ports = ["COM" + str(i + 1) for i in range(256)]
 
-  elif sys.platform.startswith('linux') or sys.platform.startswith('cygwin'):
-      # this is to exclude your current terminal "/dev/tty"
-      ports = glob.glob('/dev/tty[A-Za-z]*')
+    elif sys.platform.startswith("linux") or sys.platform.startswith("cygwin"):
+        # this is to exclude your current terminal "/dev/tty"
+        ports = glob.glob("/dev/tty[A-Za-z]*")
 
-  elif sys.platform.startswith('darwin'):
-      ports = glob.glob('/dev/tty.*')
+    elif sys.platform.startswith("darwin"):
+        ports = glob.glob("/dev/tty.*")
 
-  else:
-      raise EnvironmentError('Unsupported platform')
+    else:
+        raise EnvironmentError("Unsupported platform")
 
-  result = []
-  for port in ports:
-      try:
-          s = serial.Serial(port)
-          s.close()
-          result.append(port)
-      except (OSError, serial.SerialException):
-          pass
-  return result
+    result = []
+    for port in ports:
+        try:
+            s = serial.Serial(port)
+            s.close()
+            result.append(port)
+        except (OSError, serial.SerialException):
+            pass
+    return result
+
 
 def serial_write(ser, data):
-  if sys.platform.startswith('win'):
-    ser.write([data, ])
-  else:
-    ser.write(data)
+    if sys.platform.startswith("win"):
+        ser.write(
+            [
+                data,
+            ]
+        )
+    else:
+        ser.write(data)
+
 
 def parse_serial(ser):
     """
@@ -63,22 +70,24 @@ def parse_serial(ser):
     """
     try:
         data = ser.readline().decode().split()
-        if len(data) == 6 and data[0] == 'X' and data[3] == 'Y':
+        if len(data) == 6 and data[0] == "X" and data[3] == "Y":
             return (int(float(data[2])), int(float(data[5])))
     except Exception:
         ser.close()
 
+
 def readSensorData(ser, get_loc):
     # Tell MSP to collect data
-    serial_write(ser, b'6')
+    serial_write(ser, b"6")
     # parse to readable format
     serial_data = parse_serial(ser)
     # convert raaw values to location
-    if (serial_data[0] == -1 or serial_data[1] == -1):
+    if serial_data[0] == -1 or serial_data[1] == -1:
         loc = (-1, -1)
     else:
         loc = get_loc(serial_data[0], serial_data[1])
     return "(" + str(loc[0]) + "," + str(loc[1]) + ")"
+
 
 def get_ser_port():
     print("\nEE16A Touchscreen 2 Lab\n")
@@ -88,7 +97,7 @@ def get_ser_port():
     ports = serial_ports()
     if ports:
         print("Available serial ports:")
-        for (i, p) in enumerate(ports):
+        for i, p in enumerate(ports):
             print("%d) %s" % (i + 1, p))
     else:
         print("No ports available. Check serial connection and try again.")
@@ -96,21 +105,23 @@ def get_ser_port():
         sys.exit()
 
     selection = input("Select the port to use: ")
-    ser = serial.Serial(ports[int(selection) - 1], BAUD_RATE, timeout = 150)
+    ser = serial.Serial(ports[int(selection) - 1], BAUD_RATE, timeout=150)
     return ser
+
 
 def handshake(y, get_loc):
     ser = get_ser_port()
     print("\nPING MSP with data request.\n")
     i = 0
-    for _ in range (0,y):
+    for _ in range(0, y):
         x = str(readSensorData(ser, get_loc))
         print("Received " + x + " from MSP")
-        if (x[0] == "("):
-            i += 1;
+        if x[0] == "(":
+            i += 1
         time.sleep(1)
     ser.close()
-    print("\n", y, "packets requested,", i, "received,", (5-i)/y, "% packet loss.")
+    print("\n", y, "packets requested,", i, "received,", (5 - i) / y, "% packet loss.")
+
 
 def stream(get_loc):
     ser = get_ser_port()
@@ -120,28 +131,39 @@ def stream(get_loc):
         try:
             time.sleep(0.1)
             x = str(readSensorData(ser, get_loc))
-            if (x != "(-1,-1)"):
+            if x != "(-1,-1)":
                 print("Touched: " + x)
         except KeyboardInterrupt:
             ser.close()
             break
 
-def launch_gui(get_loc):
 
+def launch_gui(get_loc):
     ser = get_ser_port()
 
     #######
     # GUI #
     #######
 
-    on  = "#00ff00"
+    on = "#00ff00"
     off = "#a6a6a6"
     color = [off, off, off, off, off, off, off, off, off, off]
-    locs = { "(0,0)":0, "(1,0)":1, "(2,0)":2, "(0,1)":3, "(1,1)":4, "(2,1)":5, "(0,2)":6, "(1,2)":7, "(2,2)":8, "(-1,-1)":9}
+    locs = {
+        "(0,0)": 0,
+        "(1,0)": 1,
+        "(2,0)": 2,
+        "(0,1)": 3,
+        "(1,1)": 4,
+        "(2,1)": 5,
+        "(0,2)": 6,
+        "(1,2)": 7,
+        "(2,2)": 8,
+        "(-1,-1)": 9,
+    }
 
     # TKINTER ROOT
     root = Tk()
-    root.minsize(200,50)
+    root.minsize(200, 50)
 
     # DRAW FRAMES
     toprow = Frame(root)

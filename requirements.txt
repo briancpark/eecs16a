@@ -1,0 +1,12 @@
+numpy
+matplotlib
+black
+black[jupyter]
+scipy
+jupyter
+jupyterlab
+ipython==7.23.1
+ipykernel
+ipympl
+PyQt5
+pyserial
