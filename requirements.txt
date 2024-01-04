@@ -10,3 +10,4 @@ ipykernel
 ipympl
 PyQt5
 pyserial
+imageio
