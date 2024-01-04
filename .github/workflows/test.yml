@@ -18,12 +18,8 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
-            python-version: 3.9
-      - name: Install LaTeX and Pandoc
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive-latex-base texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra texlive-latex-recommended texlive-science texlive-xetex pandoc
-      - name: Install DS 100
+            python-version: 3.8
+      - name: Install EECS 16A
         run: |
           python3 -m pip install --upgrade pip
           pip3 install -r requirements.txt
