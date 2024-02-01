@@ -123,9 +123,9 @@ class Mask(QtWidgets.QWidget):
             curr_scan = np.dot(
                 mask, img_vec
             )  # Perform a scan using dot product of mask row vec and image col vec
-            self.sensor_readings[
-                self.count
-            ] = curr_scan  # Add to vector of sensor reading
+            self.sensor_readings[self.count] = (
+                curr_scan  # Add to vector of sensor reading
+            )
 
             if self.noise:
                 self.sensor_readings[self.count] += self.scan_noise[self.count]
